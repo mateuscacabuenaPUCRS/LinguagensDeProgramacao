@@ -1,0 +1,21 @@
+
+
+%%
+
+%standalone
+
+
+Letra = [a-zA-Z]
+Digito = [0-9]
+Comentario = "\/\*".*?"\*\/"
+Palavra = {Letra}*
+Numero = {Digito}+ 
+
+%%
+
+{Comentario} {System.out.println("Comentario valido");}
+
+{Palavra} {System.out.println("Comentario invalido");}
+
+{Digito} {System.out.println("Comentario invalido");}
+	  

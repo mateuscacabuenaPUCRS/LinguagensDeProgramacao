@@ -1,0 +1,16 @@
+
+
+%%
+
+%standalone
+
+
+PontoFlutuante = [-+]?(\d+\.\d+)
+NaoPontoFlutuante = [-+]?(\d+\|\.\d+)?.*
+
+%%
+
+{PontoFlutuante} {System.out.println("Ponto Flutuante valido");}
+
+{NaoPontoFlutuante} {System.out.println("Ponto Flutuante invalido");}
+
