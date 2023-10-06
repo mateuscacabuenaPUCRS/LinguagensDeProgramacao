@@ -1,0 +1,56 @@
+body{
+	font-family: 'Roboto', sans-serif;
+	width: 1200px;
+}
+.button-custom{
+	width: 160px;
+	margin-top: 24px;
+}
+.button-gramatica{
+	width: 200px;
+	margin-top: 24px;
+}
+.card-custom{
+	margin-bottom: 30px;
+}
+#toast-actions{
+	position: absolute;
+    left: 30px;
+    bottom: 30px;
+    opacity: 1;
+}
+#table-fita{
+	width: auto;
+}
+.icon-fita{
+	margin-top: 10px;
+}
+.modal-gramatica p{
+	margin-bottom: 0px;
+}
+.modal-gramatica{
+	margin-left: 10px;
+	margin-bottom: 20px;
+}
+.modal-conjuntos thead tr{
+	text-align: center;
+	margin-bottom: 20px;
+}
+.modal-conjuntos thead tr th{
+	width: 50%;
+}
+.modal-dialog{
+	max-width: 700px;
+}
+.modal-parsing{
+	text-align: center;
+}
+#toast-actions.toast{
+	width: 312px;
+	position: fixed;
+}
+#attention-toast{
+	bottom: 150px;
+	width: 312px;
+	left: 30px;
+}
