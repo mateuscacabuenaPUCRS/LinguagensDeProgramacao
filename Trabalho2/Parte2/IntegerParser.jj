@@ -1,0 +1,71 @@
+/*
+Este programa gera um parser da gramática:
+
+G = ({S, A, E, C}, {for, id, =, op, ;, (, ) }, P, S)
+P: { S -> for (A;E) C
+A -> id = id
+E -> id op id
+C -> A | S }
+
+No terminal, na pasta do arquivo, com os seguintes comandos:
+$ javacc OperationParser.jj
+$ javac OperationParser.java
+$ java OperationParser < validInput.txt
+$ java OperationParser < invalidInput.txt
+*/
+
+options {
+  STATIC = false;
+  JDK_VERSION = "1.8";
+}
+
+PARSER_BEGIN(OperationParser)
+import java.io.*;
+public class OperationParser {
+  public static void main(String[] args) throws ParseException {
+    OperationParser parser = new OperationParser(System.in);
+    parser.Start();
+  }
+}
+PARSER_END(OperationParser)
+
+TOKEN : {
+  <FOR: "for"> | 
+  <EQUAL: "="> | 
+  <SEMICOLON: ";"> | 
+  <LEFT_PAREN: "("> | 
+  <RIGHT_PAREN: ")"> | 
+  <ID: (["a"-"z","A"-"Z","0"-"9"])+> | 
+  <OP: ("+" | "-" | "*" | "/" | "<" | ">" | "==" | "!=")>
+}
+
+// Ignore all white space characters
+<*> SKIP: {
+  < " " | "\t" | "\r" | "\n" | "\r\n" > |
+  <"//" (~["\n","\r"])* ("\n"|"\r"|"\r\n") > |
+  <"/*"(~["/"])*  "*""/" >
+}
+
+void Start() : {} {
+  S()
+}
+
+void S() : {} {
+  // S -> for (A;E) C
+  <FOR> <LEFT_PAREN> A() <SEMICOLON> E() <RIGHT_PAREN> C()
+}
+
+void A() : {} {
+  // A -> id = id
+  <ID> <EQUAL> <ID>
+}
+
+void E() : {} {
+  // E -> id op id
+  <ID> <OP> <ID>
+}
+
+void C() : {} {
+  // C -> A | S 
+  A() | S()
+}
