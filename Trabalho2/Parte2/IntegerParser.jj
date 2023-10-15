@@ -1,4 +1,6 @@
 /*
+Nomes: Carolina Ferreira, Mateus Caçabuena e Nicholas Spolti
+
 Este programa gera um parser da gramática:
 
 G = ({S, A, E, C}, {for, id, =, op, ;, (, ) }, P, S)
@@ -8,7 +10,7 @@ E -> id op id
 C -> A | S }
 
 No terminal, na pasta do arquivo, com os seguintes comandos:
-$ javacc OperationParser.jj
+$ javacc IntegerParser.jj
 $ javac OperationParser.java
 $ java OperationParser < validInput.txt
 $ java OperationParser < invalidInput.txt
@@ -39,7 +41,6 @@ TOKEN : {
   <OP: ("+" | "-" | "*" | "/" | "<" | ">" | "==" | "!=")>
 }
 
-// Ignore all white space characters
 <*> SKIP: {
   < " " | "\t" | "\r" | "\n" | "\r\n" > |
   <"//" (~["\n","\r"])* ("\n"|"\r"|"\r\n") > |
